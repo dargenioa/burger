@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const express = require("express");
+const selectAll = require("./orm");
 //const cTable = require("console.table");
 
 // Set the port of our application
@@ -26,3 +27,4 @@ connection.connect((err) => {
     }
     console.log(`connected as id ${connection.threadId}`);
 });
+

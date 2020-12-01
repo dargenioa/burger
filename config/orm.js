@@ -1,6 +1,22 @@
 const connection = require("./connection");
-const router = require("express").Router();
 
+const selectAll = () => {
+    let query = ("SELECT * FROM burgers;")
+    connection.query(query, function (err, res) {
+      console.log(res)
+    });
+};
 
+const insertOne = () => {
 
-module.exports = router;
+};
+
+const updateOne = () => {
+
+};
+
+const deleteOne = () => {
+
+};
+
+module.exports = selectAll, insertOne, updateOne, deleteOne;
