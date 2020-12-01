@@ -1,6 +1,15 @@
 const mysql = require("mysql");
-const inquirer = require("express");
-const cTable = require("console.table");
+const express = require("express");
+//const cTable = require("console.table");
+
+// Set the port of our application
+// process.env.PORT lets the port be set by Heroku
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -11,6 +20,9 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-    if (err) throw err;
+    if (err) {
+        console.error(`error connecting: ${err.stack}`);
+        return;
+    }
     console.log(`connected as id ${connection.threadId}`);
 });
