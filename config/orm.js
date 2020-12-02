@@ -1,6 +1,7 @@
 const connection = require("./connection");
 
 const orm = {
+    //all
     selectAll: function() {
         let query = ("SELECT * FROM burgers;")
         connection.query(query, function (err, res) {
@@ -8,12 +9,15 @@ const orm = {
         });
 
     },
+    //create
     insertOne: function(){
 
     },
+    //update
     updateOne: function() {
 
     },
+    //delete
     deleteOne: function() {
 
     }
