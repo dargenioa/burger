@@ -14,7 +14,7 @@ $(document).ready(function () {
             if (burgers[i].devoured) {
                 burgerEl = `<li>
                 ${burgers[i].id}. ${burgers[i].burger_name}
-                <button class="btn btn-primary devour" data-id="${burgers[i].id}"
+                <button class="btn btn-primary devour delete-burger" data-id="${burgers[i].id}"
                 data-devoured="true">DELETE</button>`
                 devoured.append(burgerEl);
             } else {
@@ -29,31 +29,32 @@ $(document).ready(function () {
 
     $(document).on("click", ".devour", function (event) {
         let id = $(this).data("id");
-        let devoured = $(this).data("devoured")===false;
+        let devoured = $(this).data("devoured") === false;
 
         const newDevourState = {
             devoured: devoured
         };
-            //put request to update devour to true
-            $.ajax("/burgers/" + id, {
-                type: 'PUT',
-                data: JSON.stringify(newDevourState),
-                dataType:'json',
-                contentType: 'application/json'
-            }).then(function (result) {
-                console.log(result);
-                location.reload();
-            });
+        //put request to update devour to true
+        $.ajax("/burgers/" + id, {
+            type: 'PUT',
+            data: JSON.stringify(newDevourState),
+            dataType: 'json',
+            contentType: 'application/json'
+        }).then(function (result) {
+            console.log(result);
+            location.reload();
         });
-  
+    });
 
-    // if (devoured) {
-    //     //make delete request
-    //     $.ajax("/burgers/" + id, {
-    //         type: 'DELETE'
-    //     }).then(function (result) {
-    //         console.log(result);
-    //         location.reload();
-    //     });
+    $(document).on("click", ".delete-burger", function (event) {
+        var id = $(this).data("id");
+        $.ajax("/burgers/" + id, {
+            type: 'DELETE'
+        }).then(function (result) {
+            console.log(result);
+            location.reload();
+        });
+    });
 });
+
 
