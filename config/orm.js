@@ -102,7 +102,8 @@ const orm = {
 
             cb(result);
         });
-    }
+    },
+    
 };
 
 // export the ORM to the model burgers.js

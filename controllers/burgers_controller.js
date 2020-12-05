@@ -14,8 +14,6 @@ router.get("/burgers", function (req, res) {
 
 router.post("/burgers", function (req, res) {
   burger.create([
-    // try req.body.burger_name
-    // review cats.js
     "burger_name", "devoured"
   ], [
     req.body.burger_name, req.body.devoured
@@ -31,7 +29,6 @@ router.put("/burgers/:id", function(req, res){
 
   burger.update({
     burger_name: req.body.burger_name,
-    //devoured doesn't change, so can be moved
     devoured: req.body.devoured
    }, condition, function (result) {
      if (result.changedRows == 0) {
