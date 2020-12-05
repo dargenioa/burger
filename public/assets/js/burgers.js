@@ -27,38 +27,33 @@ $(document).ready(function () {
         }
     })
 
-    $(document).on("click", ".devour", function(event){
-        let devoured = $(this).data("devoured");
+    $(document).on("click", ".devour", function (event) {
         let id = $(this).data("id");
+        let devoured = $(this).data("devoured")===false;
 
-       console.log(devoured);
-        //if devoured=true then delete
-        //if devoured = false then devoured=true
-
-        if (devoured) {
-            //make delete request
-            $.ajax({
-                url: "/burgers/" + id,
-                type: 'DELETE',
-                success: function(result) {
-                    location.reload();
-                    // Do something with the result
-                }
-            });
-
-        } else {
+        const newDevourState = {
+            devoured: devoured
+        };
             //put request to update devour to true
-            $.ajax({
-                url: "/burgers/devour/" + id,
+            $.ajax("/burgers/" + id, {
                 type: 'PUT',
-                success: function(result) {
-                    location.reload();
-                    // Do something with the result
-                }
+                data: JSON.stringify(newDevourState),
+                dataType:'json',
+                contentType: 'application/json'
+            }).then(function (result) {
+                console.log(result);
+                location.reload();
             });
-        }
+        });
+  
 
-    })
-
+    // if (devoured) {
+    //     //make delete request
+    //     $.ajax("/burgers/" + id, {
+    //         type: 'DELETE'
+    //     }).then(function (result) {
+    //         console.log(result);
+    //         location.reload();
+    //     });
 });
 
