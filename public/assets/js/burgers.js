@@ -27,6 +27,26 @@ $(document).ready(function () {
         }
     })
 
+    $(document).on("submit", ".add-burger", function (event) {
+        event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#burger_name")
+                .val()
+                .trim(),
+        };
+
+        $.ajax("/burgers", {
+            type: "POST",
+            data: JSON.stringify(newBurger),
+            dataType: 'json',
+            contentType: 'application/json'
+        }).then(function () {
+            location.reload();
+        });
+    });
+
+
     $(document).on("click", ".devour", function (event) {
         let id = $(this).data("id");
         let devoured = $(this).data("devoured") === false;
@@ -34,7 +54,6 @@ $(document).ready(function () {
         const newDevourState = {
             devoured: devoured
         };
-        //put request to update devour to true
         $.ajax("/burgers/" + id, {
             type: 'PUT',
             data: JSON.stringify(newDevourState),
