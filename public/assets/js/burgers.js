@@ -14,13 +14,13 @@ $(document).ready(function () {
             if (burgers[i].devoured) {
                 burgerEl = `<li>
                 ${burgers[i].id}. ${burgers[i].burger_name}
-                <button class="btn btn-primary devour delete-burger" data-id="${burgers[i].id}"
+                <button class="btn btn-dark btn-sm devour delete-burger" data-id="${burgers[i].id}"
                 data-devoured="true">DELETE</button>`
                 devoured.append(burgerEl);
             } else {
                 burgerEl = `<li>
                 ${burgers[i].id}. ${burgers[i].burger_name}
-                <button class="btn btn-primary devour" data-id="${burgers[i].id}"
+                <button class="btn btn-dark btn-sm devour" data-id="${burgers[i].id}"
                 data-devoured="false">DEVOUR</button>`
                 notDevoured.append(burgerEl);
             }

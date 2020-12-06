@@ -1,9 +1,25 @@
 body {
     width: 99%;
     height: 900px;
-    background-color: #fc6;
+    color: white;
+    font-family: monospace;
+    background-image: linear-gradient(to left, orange, #FF6347);
+    font-size: 15px;
+   }
+
+   .jumbotron {
+    background-image: url("../../assets/images/cartoonburgers.jpg");
+    margin: -20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   }
+
+  li .devour {
+    margin: 10px;
+    margin-left: auto;
+
   }
-  
+
+
   #top-bar {
     margin-top: 28px;
   }
@@ -64,7 +80,8 @@ body {
   }
   
   h1 {
-    color: #f30;
+    color: black;
+    text-align: center;
   }
   
   .burger-row {
